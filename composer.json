@@ -1,0 +1,26 @@
+{
+    "name": "subdesign/laravel-cli-user",
+    "description": "Quickly create users on command line",
+    "keywords": [
+        "laravel",
+        "cli",
+        "user-manager"
+    ],   
+    "homepage": "https://github.com/subdesign/laravel-cli-user",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Barna Szalai",
+            "email": "szalai.b@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^5.4.0 || ^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Subdesign\\LaravelCliUser\\": "src"
+        }
+    },
+    "minimum-stability": "dev"
+}
