@@ -27,7 +27,7 @@ php artisan vendor:publish --provider="Subdesign\LaravelCliUser\CliUserServicePr
 ```
 ## Configuration
 
-Edit the `app/cliuser.php` config file to set where your User model exists.
+Edit the `config/cliuser.php` config file to set where your User model exists.
 
 ```php
 return [
