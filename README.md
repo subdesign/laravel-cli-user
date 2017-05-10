@@ -13,7 +13,7 @@ Tested on Laravel 5.1, 5.2, 5.3 and 5.4
 ## Installation
 
 ```bash
-composer require subdesign/laravel-cli-user:dev-master
+composer require subdesign/laravel-cli-user:^1.0.0
 ```
 
 Add the following line to the service providers array in the `config/app.php` file
