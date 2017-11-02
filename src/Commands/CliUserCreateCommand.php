@@ -33,7 +33,7 @@ class CliUserCreateCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'cliuser:create {--show-password : Show letters in password field}';
+    protected $signature = 'cliuser:create {name?} {email?} {--random-password : Create the user with a random password} {--show-password : Show letters in password field}';
 
     /**
      * The console command description.
@@ -94,20 +94,26 @@ class CliUserCreateCommand extends Command
         $fullname = $this->getFullname();
 
         $email = $this->getEmail();
-        
-        if ($this->confirm('Do you want to set password?')) {
 
-            $password = $this->getPassword();
+        if ($this->option('random-password')) {
 
-            $password_confirmation = $this->getPasswordConfirmation();
-
-            if ($password !== $password_confirmation) {
-                $this->error('The password confirmation doesn\'t match the password!');
-                $this->getPasswordConfirmation();
-            }
+            $password = str_random(40);
 
         } else {
-            $password = null;
+            if ($this->confirm('Do you want to set password?')) {
+
+                $password = $this->getPassword();
+
+                $password_confirmation = $this->getPasswordConfirmation();
+
+                if ($password !== $password_confirmation) {
+                    $this->error('The password confirmation doesn\'t match the password!');
+                    $this->getPasswordConfirmation();
+                }
+
+            } else {
+                $password = null;
+            }
         }
 
         try {
@@ -129,7 +135,11 @@ class CliUserCreateCommand extends Command
      */
     private function getFullname()
     {
-        $value = $this->ask('Full name');
+        $value = $this->argument('name');
+
+        if (empty($value) === true) {
+            $value = $this->ask('Full name');
+        }
 
         $v = $this->validator->make(
             ['value' => trim($value)], 
@@ -152,7 +162,12 @@ class CliUserCreateCommand extends Command
      */
     private function getEmail()
     {
-        $value = $this->ask('E-mail');
+
+        $value = $this->argument('email');
+
+        if (empty($value) === true) {
+            $value = $this->ask('E-mail');
+        }
 
         $v = $this->validator->make(
             ['value' => trim($value)], 
