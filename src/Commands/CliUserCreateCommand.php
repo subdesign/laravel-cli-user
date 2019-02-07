@@ -99,6 +99,10 @@ class CliUserCreateCommand extends Command
 
             $password = str_random(40);
 
+            if ($this->option('show-password')) {
+                $this->info('Generated password: ' . $password . PHP_EOL);
+            }
+
         } else {
             if ($this->confirm('Do you want to set password?')) {
 

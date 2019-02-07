@@ -22,5 +22,12 @@
             "Subdesign\\LaravelCliUser\\": "src"
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Subdesign\\LaravelCliUser\\CliUserServiceProvider"
+            ]
+        }
+    },
     "minimum-stability": "dev"
 }

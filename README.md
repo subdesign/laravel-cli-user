@@ -8,7 +8,7 @@ You can quickly create, delete and list users on command line
 ## Requirements
 
 PHP 5.4+  
-Tested on Laravel 5.1, 5.2, 5.3 and 5.4
+Tested on Laravel 5.1, 5.2, 5.3, 5.4 and 5.7
 
 ## Installation
 
@@ -17,6 +17,7 @@ composer require subdesign/laravel-cli-user:^1.0.0
 ```
 
 Add the following line to the service providers array in the `config/app.php` file
+**Laravel 5.5+ uses Package Auto-Discovery, so doesn't require you to manually add the ServiceProvider.**
 ```php
 Subdesign\LaravelCliUser\CliUserServiceProvider::class
 ```
@@ -46,6 +47,11 @@ php artisan cliuser:create
 Show password letters
 ```bash
 php artisan cliuser:create --show-password
+```
+
+Create a user with random password
+```bash
+php artisan cliuser:create 'John Doe' email@example.org --random-password --show-password
 ```
 
 #### Delete user
